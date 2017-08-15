@@ -1,0 +1,13 @@
+
+#includes only white-listed units
+
+/*
+!/app/
+!/beavertool-proxy-server/
+!dev-test.js
+!dev-test.sh
+!package.json
+!README
+!.gitignore
+
+

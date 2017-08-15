@@ -1,0 +1,99 @@
+
+Description.
+
+    "beavertool-proxy-server" is a small development suite
+        - to allow web site cloning including files requested from running JavaScript
+        - separate groups of requests and handle them on different web sites or different local JavaScript applications
+        - in particular, emulate database ajax calls and handle them in custom-made JavaScript application, beapp.js
+
+     This architecture allows to develop/test JavaScript part from database site independent from the real database.
+
+
+    1.  Its main application is backend-server.sh
+
+    2.  Look for the browser-proxy-remotesite diagram in the file "backend-server.js"
+        Look for node-dependencies there.
+
+    3.  Express.js posed to us problems ... apperntly saving both binary and text files in the same session.
+        The current solution with "native-vanilla" node.js libraries worked better.
+
+
+    June 15, 2017.
+
+Installation.
+
+    (if no parent project exists yet, do 
+        npm init
+    )
+
+    from repository:
+        npm install --save-dev beavertool-proxy-server
+    from file:
+        npm install --save-dev beavertool-proxy-server-root.tar
+
+
+Usage
+
+    There are two parts coming from installation package.
+
+    1. module itself which resides in beavertool-proxy-server/beavertool-proxy-server.js
+    2. test application: beavertool-proxy-server/dev-test.js 
+       copy this file into total-project root and run as node dev-test.js
+       after installation to see how proxy works 
+
+       modify this file for your needs
+    3. for more sofisticated use, see a template
+       beavertool-proxy-server/app
+
+ 
+    Restrictions.
+        The cloning of the site works only for "simple" sites. Which means there are site "domain"/"path" requests and
+        all requests do not have "domain" prefix. The "domain" prefix is set right in configuration file, dev-test.js, and
+        initial path, aka index.html, is typed in address bar in the web browser by user.
+
+        In other words, all of the calls from the browser to this site do use only relative part, "path".
+
+        Tere is no protection against malformed "path"s inside web page. 
+        For example, "path" = /../../../xxx.html may create file outside of node project which is insecure.
+
+        In particular, if JS will assembly "domain"/"path" token and request it, then request will bypass this proxy.
+
+
+        To make this proxy real "master", set web-browser settings to its IP:port like in
+        https://askubuntu.com/questions/513840/google-chrome-proxy-settings 
+
+
+Development.
+
+    npm install --save-dev cookie
+    ...
+
+
+
+Publishing:
+
+    help: https://www.guru99.com/node-js-modules-create-publish.html
+
+    
+    This is a sample from GitHub:
+
+        start state: 
+            new repository,
+            lancelab/dev-proxy-server.git,
+            created on GitHub, but the project
+            is not checked in locally and no .git initialized
+            under this project yet
+
+        echo "# dev-proxy-server" >> README.md
+        git init
+        git add README.md
+        git commit -m "first commit"
+        git remote add origin https://github.com/lancelab/dev-proxy-server.git
+        git push -u origin master
+
+    …or push an existing repository from the command line
+
+        git remote add origin https://github.com/lancelab/dev-proxy-server.git
+        git push -u origin master
+
+
