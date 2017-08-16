@@ -4,20 +4,30 @@
 
     // //\\ INSTRUCTIONS
     /*    
-            In given configuration (below) the target domain is set to whirlio.com
+            In default configuration (below) the target domain
+            is set to whirlio.com
+
             And proxy-server responses to http://localhost:8060
-            In browser window, put local domain and target path, "/", for example
+
+            In browser window, put local domain and target path, "/",
+                for example
                 http://localhost:8060/
+
             or, for example, path = /doc/guest_readme.htm
                 http://localhost:8060/doc/guest_readme.htm
     */
     // \\// INSTRUCTIONS
 
 
+
+
     // //\\     CONFIGURATION
-    ///         all parameters are optional
+
+    var MODE = "PRODUCTION"; // "DEVELOPMENT";
+
     var conf =
     {
+        //// all parameters are optional
 
         // ======================================================
         // site 1
@@ -39,13 +49,12 @@
 
 
 
-
-
         /*
         // ======================================================
         // site 2
         var remoteHost   = 'localhost';
-        //. "savedSite" apparently has web sockets which perhaps are not implemented in text after these two lines
+        //. "savedSite" apparently has web sockets which perhaps are not implemented
+        //in text after these two lines
         //var remotePath = '/xb/back/3rd/sniffed/march13/dev/savedSite';
 
         //appar. this does not crash on WebSockets
@@ -66,7 +75,7 @@
 
         // ============================================
         // site 4
-        //  dev server
+        // dev server
         //var remoteHost   = '.....';
         //var remotePath   = '...';
         //var remotePort   = '..';
@@ -78,10 +87,12 @@
         js_pattern              : /\.js$/i,
         replace_query           : /\?[^\?]*$/,
 
-                                               //should be folder where "node script.js" runs 
-        rel_path_to_save        : 'savedSite', //inside of the parent of this file = in folder: "proxy/../"
+        //.place where cloned site will be saved
+        //sibling to dev-test.js
+        rel_path_to_save        : 'savedSite',
 
-        beappModule             : null //'../app/js/backend/beapp.js'; //set to falsy if there is no "beappModule"
+        //usually emulates back end server
+        beappModule             : null //null or '../app/js/backend/beapp.js'; 
     }
     // \\//     CONFIGURATION
 
@@ -90,27 +101,27 @@
 
 
 
-    //.is there a way to test the module with relative path aka:
-    //var test = require( "./beavertool_proxy_server" );
-    //something like: https://docs.npmjs.com/cli/link
 
 
 
-    //  //\\ when developing this module
-    //.non-convenient way to develop, but relative path had no luck
-    var test = require( "/var/www/html/sand/dev/platforms/nodejs/creating-node-modules/beavertool-proxy-server-root/beavertool-proxy-server/beavertool-proxy-server.js");
-    //  \\// when developing this module
+    if( MODE === "DEVELOPMENT" ) {
 
+        //// use this code when developing this module
+        //// non-convenient way to develop, but relative path had no luck
+        var test = require( "/var/www/html/sand/dev/platforms/nodejs/creating-node-modules/beavertool-proxy-server-root/beavertool-proxy-server/beavertool-proxy-server.js");
 
+        //.is there a way to test the module with relative path aka:
+        //var test = require( "./beavertool_proxy_server" );
+        //something like: https://docs.npmjs.com/cli/link
 
+    } else {
 
-    //  //\\ when installed inside of other project:
+        //// use this code when installed from npm
+        var test = require( "beavertool-proxy-server");
 
-    //use this if main : ... in package.json fails:
-    //var test = require( "beavertool-proxy-server/beavertool-proxy-server/beavertool-proxy-server");
-
-//    var test = require( "beavertool-proxy-server");
-    //  \\// when installed inside of other project:
+        //  use this if main : ... in package.json fails:
+        //  var test = require( "beavertool-proxy-server/beavertool-proxy-server/beavertool-proxy-server");
+    }
 
     test( conf );
 

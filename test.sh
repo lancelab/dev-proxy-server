@@ -13,7 +13,7 @@ PARENT_ABS_PATH=`pwd` #/`basename "$0"` #http://stackoverflow.com/questions/1923
 ROOT_NOW=`pwd`
 echo "folder root=$ROOT_NOW"
 
-cmd="$PARENT_ABS_PATH/dev-test.js"
+cmd="$PARENT_ABS_PATH/test.js"
 echo starting $cmd
 node $cmd
 
