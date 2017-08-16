@@ -1,6 +1,6 @@
 {
   "name": "beavertool-proxy-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Clones/controls site including JavaScript initiated requests. Manages browser session in progress from cli. Template to emulate server backend context by local JavaScript application. Debugging JavaScript development for backend database calls without having database.",
   "main": "beavertool-proxy-server/beavertool-proxy-server.js",
   "author": "Konstantin Kirillov",
