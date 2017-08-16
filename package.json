@@ -1,17 +1,25 @@
 {
   "name": "beavertool-proxy-server",
   "version": "1.0.0",
-
   "description": "Clones/controls site including JavaScript initiated requests. Manages browser session in progress from cli. Template to emulate server backend context by local JavaScript application. Debugging JavaScript development for backend database calls without having database.",
-
   "main": "beavertool-proxy-server/beavertool-proxy-server.js",
   "author": "Konstantin Kirillov",
-
   "license": "MIT",
-
   "dependencies": {
     "cookie": "^0.3.1",
     "extend": "^3.0.1",
     "qs": "^6.4.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lancelab/dev-proxy-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lancelab/dev-proxy-server/issues"
+  },
+  "homepage": "https://github.com/lancelab/dev-proxy-server#readme"
 }
