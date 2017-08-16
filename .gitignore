@@ -4,8 +4,8 @@
 /*
 !/app/
 !/beavertool-proxy-server/
-!dev-test.js
-!dev-test.sh
+!test.js
+!test.sh
 !package.json
 !README
 !.gitignore

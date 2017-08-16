@@ -1,6 +1,4 @@
 
-    console.log( 'calling dev test ...' );
-
 
     // //\\ INSTRUCTIONS
     /*    
@@ -21,9 +19,14 @@
 
 
 
+
+
+
+
+
     // //\\     CONFIGURATION
 
-    var MODE = "PRODUCTION"; // "DEVELOPMENT";
+    var MODE = checkSiblingFile( 'development-mode' ) ? "DEVELOPMENT" : "PRODUCTION";
 
     var conf =
     {
@@ -62,7 +65,6 @@
         var httpX      = 'http:'; //'https:'; //remote server protocol
         // ======================================================
         */
-
 
 
         // ============================================
@@ -108,7 +110,7 @@
 
         //// use this code when developing this module
         //// non-convenient way to develop, but relative path had no luck
-        var test = require( "/var/www/html/sand/dev/platforms/nodejs/creating-node-modules/beavertool-proxy-server-root/beavertool-proxy-server/beavertool-proxy-server.js");
+        var test = require( "/var/www/html/sand/dev/platforms/nodejs/creating-node-modules/beavertool-proxy-server-root/beavertool-proxy-server/beavertool-proxy-server.js" );
 
         //.is there a way to test the module with relative path aka:
         //var test = require( "./beavertool_proxy_server" );
@@ -117,11 +119,20 @@
     } else {
 
         //// use this code when installed from npm
-        var test = require( "beavertool-proxy-server");
+        var test = require( "beavertool-proxy-server" );
 
         //  use this if main : ... in package.json fails:
         //  var test = require( "beavertool-proxy-server/beavertool-proxy-server/beavertool-proxy-server");
     }
 
     test( conf );
+
+
+    ////checks does file exists
+    function checkSiblingFile ( fileName ) {
+        var fs = require ( 'fs' );
+        var path = require('path');
+        var filePath = path.join( __dirname, fileName );
+        return fs.existsSync( filePath );
+    };
 
