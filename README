@@ -47,7 +47,7 @@ Usage
        
        copy this file into node-project root and run as
        node test.js
-       then land your web browser on localhost:8086/
+       then land your web browser on localhost:8060/
 
        modify test.js file for your needs
 
@@ -83,7 +83,7 @@ Restrictions.
         https://askubuntu.com/questions/513840/google-chrome-proxy-settings 
 
 
-Installation.
+Installation at design-time.
 
     npm install --save-dev cookie
     ...
